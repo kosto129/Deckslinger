@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://main_scene"]
+[gd_scene load_steps=17 format=3 uid="uid://main_scene"]
 
 [ext_resource type="Script" path="res://src/core/entity_base.gd" id="1_entity"]
 [ext_resource type="Script" path="res://src/core/transition_overlay.gd" id="2_overlay"]
@@ -11,6 +11,19 @@
 [ext_resource type="Script" path="res://src/core/combat_system.gd" id="9_combat"]
 [ext_resource type="Script" path="res://src/core/card_hand_system.gd" id="10_card_hand"]
 [ext_resource type="Script" path="res://src/components/faction_component.gd" id="11_faction"]
+[ext_resource type="Script" path="res://src/gameplay/entity_visual_feedback.gd" id="12_feedback"]
+
+[sub_resource type="RectangleShape2D" id="player_hitbox_shape"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="player_hurtbox_shape"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="overlay_shape"]
+size = Vector2(384, 216)
+
+[sub_resource type="RectangleShape2D" id="placeholder"]
+size = Vector2(16, 16)
 
 [node name="Main" type="Node2D"]
 
@@ -18,7 +31,14 @@
 
 [node name="Player" type="Node2D" parent="."]
 script = ExtResource("1_entity")
-position = Vector2(192, 108)
+position = Vector2(100, 108)
+
+[node name="Sprite" type="ColorRect" parent="Player"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.2, 0.4, 0.9, 1)
 
 [node name="HealthComponent" type="Node" parent="Player"]
 script = ExtResource("4_health")
@@ -37,6 +57,7 @@ collision_layer = 1
 collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Player/HitboxComponent"]
+shape = SubResource("player_hitbox_shape")
 
 [node name="HurtboxComponent" type="Area2D" parent="Player"]
 script = ExtResource("8_hurtbox")
@@ -44,10 +65,14 @@ collision_layer = 2
 collision_mask = 36
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Player/HurtboxComponent"]
+shape = SubResource("player_hurtbox_shape")
 
 [node name="FactionComponent" type="Node" parent="Player"]
 script = ExtResource("11_faction")
 faction = 0
+
+[node name="VisualFeedback" type="Node" parent="Player"]
+script = ExtResource("12_feedback")
 
 [node name="PlayerController" type="Node" parent="Player"]
 script = ExtResource("3_player_ctrl")

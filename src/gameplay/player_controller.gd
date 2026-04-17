@@ -43,9 +43,7 @@ func _handle_movement() -> void:
 
 	var move_dir := InputManager.get_movement_vector()
 	_movement.velocity = move_dir * _movement.move_speed
-
-	if _entity:
-		_entity.position += _movement.velocity * get_physics_process_delta_time()
+	_entity.position += _movement.velocity * get_physics_process_delta_time()
 
 	if move_dir.length() > 0.01:
 		_movement.facing = move_dir.normalized()
@@ -58,7 +56,6 @@ func _handle_card_input() -> void:
 	if _animation and _animation.is_in_action():
 		return
 
-	# Check card slot inputs (1-4)
 	for i in range(4):
 		var action := &"card_%d" % (i + 1)
 		if InputManager.consume_buffered_action(action):
@@ -71,26 +68,36 @@ func _handle_attack() -> void:
 		return
 
 	if InputManager.consume_buffered_action(&"attack"):
-		# Basic attack — play a generic attack animation
+		_do_attack(&"basic_attack", 10, 1.0, 6, 3, 8)
+
+
+func _do_attack(anim_key: StringName, damage: int, shake: float, windup: int, active: int, recovery: int) -> void:
+	if _animation:
+		_animation.play_action(anim_key, windup, active, recovery)
+
+	if _hitbox:
+		var hit := HitData.new()
+		hit.source_entity = _entity
+		hit.damage = damage
+		hit.shake_intensity = shake
+		hit.effect_source = anim_key
+
+		# Enable hitbox when active phase starts
 		if _animation:
-			_animation.play_action(&"basic_attack", 6, 3, 8)
-		if _hitbox:
-			var hit := HitData.new()
-			hit.source_entity = _entity
-			hit.damage = 10
-			hit.shake_intensity = 1.0
-			_hitbox.enable(hit)
-			# Disable after active phase via signal
-			if _animation:
-				_animation.recovery_started.connect(
-					func(_key: StringName) -> void: _hitbox.disable(),
-					CONNECT_ONE_SHOT
-				)
+			_animation.active_started.connect(
+				func(_key: StringName) -> void: _hitbox.enable(hit),
+				CONNECT_ONE_SHOT
+			)
+			_animation.recovery_started.connect(
+				func(_key: StringName) -> void:
+					_hitbox.disable()
+					_hitbox.clear_hit_targets(),
+				CONNECT_ONE_SHOT
+			)
 
 
 func _try_play_card(slot_index: int) -> void:
-	# CardHandSystem is accessed via the scene tree (not autoload for now)
-	var card_hand := _find_card_hand_system()
+	var card_hand := get_node_or_null("/root/Main/CardHandSystem") as CardHandSystem
 	if card_hand == null:
 		return
 
@@ -98,35 +105,13 @@ func _try_play_card(slot_index: int) -> void:
 	if card == null:
 		return
 
-	# Play the card's action animation
-	if _animation:
-		_animation.play_action(
-			card.animation_key,
-			card.windup_frames,
-			card.active_frames,
-			card.recovery_frames
-		)
+	# Get damage from first effect if it's a damage effect
+	var damage: int = 0
+	if card.effects.size() > 0 and card.effects[0].effect_type == Enums.EffectType.DAMAGE:
+		damage = int(card.effects[0].value)
 
-	# Enable hitbox during active phase for attack cards
-	if card.card_type == Enums.CardType.ATTACK and _hitbox:
-		var hit := HitData.new()
-		hit.source_entity = _entity
-		hit.damage = int(card.effects[0].value) if card.effects.size() > 0 else 0
-		hit.shake_intensity = card.shake_intensity
-		hit.effect_source = card.card_id
-		if _animation:
-			_animation.active_started.connect(
-				func(_key: StringName) -> void: _hitbox.enable(hit),
-				CONNECT_ONE_SHOT
-			)
-			_animation.recovery_started.connect(
-				func(_key: StringName) -> void: _hitbox.disable(),
-				CONNECT_ONE_SHOT
-			)
-
-
-func _find_card_hand_system() -> CardHandSystem:
-	var node := get_node_or_null("/root/Main/CardHandSystem")
-	if node is CardHandSystem:
-		return node as CardHandSystem
-	return null
+	if card.card_type == Enums.CardType.ATTACK and damage > 0:
+		_do_attack(card.animation_key, damage, card.shake_intensity, card.windup_frames, card.active_frames, card.recovery_frames)
+	elif _animation:
+		# Non-attack cards still play their animation
+		_animation.play_action(card.animation_key, card.windup_frames, card.active_frames, card.recovery_frames)

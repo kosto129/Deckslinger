@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://src/foundation/data/card_data.gd" id="1"]
+[ext_resource type="Script" path="res://src/foundation/data/card_effect.gd" id="2"]
 
-[sub_resource type="Resource" id="effect_1"]
-script = preload("res://src/foundation/data/card_effect.gd")
+[sub_resource type="Resource" id="CardEffect_1"]
+script = ExtResource("2")
 effect_type = 0
 value = 5.0
 secondary_value = 0.0
@@ -20,7 +21,7 @@ description = "Spray {damage} damage in a wide arc."
 card_type = 0
 archetype = 0
 rarity = 0
-effects = [SubResource("effect_1")]
+effects = [SubResource("CardEffect_1")]
 targeting = 1
 cooldown_frames = 0
 animation_key = &"fan_fire"
