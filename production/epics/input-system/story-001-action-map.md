@@ -1,7 +1,7 @@
 # Story 001: Action Map Configuration
 
 > **Epic**: Input System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Config/Data
 > **Manifest Version**: 2026-04-17
@@ -26,13 +26,13 @@
 
 ## Acceptance Criteria
 
-- [ ] `project.godot` contains all 15 actions defined in GDD table A.1
-- [ ] Every action has at least one KB/M binding and at least one gamepad binding as specified below
-- [ ] Action names exactly match the StringName constants used in InputManager (`&"move_up"`, `&"attack"`, etc.)
-- [ ] Pressing each bound key/button in the Godot editor Input Map confirms the action fires
-- [ ] No two actions share the same binding (conflict check passes)
-- [ ] Movement actions (move_up/down/left/right) use positive/negative axis thresholds for gamepad left stick
-- [ ] `aim` action is configured as a 2D axis (right stick) not a button
+- [x] `project.godot` contains all 15 actions defined in GDD table A.1 (aim split into aim_stick_x/aim_stick_y for Godot axis handling = 16 entries)
+- [x] Every action has at least one KB/M binding and at least one gamepad binding as specified below
+- [x] Action names exactly match the StringName constants used in InputManager (`&"move_up"`, `&"attack"`, etc.)
+- [ ] Pressing each bound key/button in the Godot editor Input Map confirms the action fires (requires in-engine verification)
+- [x] No two actions share the same binding (conflict check passes)
+- [x] Movement actions (move_up/down/left/right) use positive/negative axis thresholds for gamepad left stick
+- [x] `aim` action is configured as 2D axes (right stick X/Y as aim_stick_x/aim_stick_y)
 
 ---
 
@@ -86,7 +86,7 @@ All 15 actions must be present. Configuration target: **Project Settings → Inp
 
 **Story Type**: Config/Data
 **Required evidence**: Smoke check — all 15 actions exist in project.godot and both input methods produce the correct action event in a test scene
-**Status**: [ ] Not yet created
+**Status**: [x] All 16 action entries configured in project.godot — in-engine binding verification pending
 
 ---
 

@@ -1,7 +1,7 @@
 # Story 001: Shared Enums Autoload
 
 > **Epic**: Entity Framework
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Config/Data
 > **Manifest Version**: 2026-04-17
@@ -25,10 +25,10 @@
 
 ## Acceptance Criteria
 
-- [ ] `src/core/enums.gd` exists with `class_name Enums`
-- [ ] All 12 enum types defined: EntityType, LifecycleState, CardArchetype, CardRarity, CardType, EffectType, TargetingMode, EffectCategory, StackingRule, InputMode, InputDevice, RoomType, RunOutcome
-- [ ] Script registered as autoload in `project.godot`
-- [ ] Enums are accessible from any script via `Enums.EntityType.PLAYER` syntax
+- [x] `src/core/enums.gd` exists with `class_name Enums`
+- [x] All 13 enum types defined: EntityType, LifecycleState, CardArchetype, CardRarity, CardType, EffectType, TargetingMode, EffectCategory, StackingRule, InputMode, InputDevice, RoomType, RunOutcome
+- [x] Script registered as autoload in `project.godot`
+- [x] Enums are accessible from any script via `Enums.EntityType.PLAYER` syntax
 
 ---
 
@@ -49,7 +49,7 @@ Create `src/core/enums.gd` with all enum definitions from ADR-0004. Register as 
 
 **Story Type**: Config/Data
 **Required evidence**: Smoke check — enums load without error
-**Status**: [ ] Not yet created
+**Status**: [x] Smoke check — enums load via autoload, all 13 types defined
 
 ---
 

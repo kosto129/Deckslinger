@@ -1,7 +1,7 @@
 # Story 001: Deck and Hand Initialization
 
 > **Epic**: Card Hand System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -177,7 +177,7 @@ Formula F.2 (Opening Hand Probability): `P_in_hand = HAND_SIZE / deck_size`. Wit
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/card_hand/deck_and_hand_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/card_hand/deck_and_hand_test.gd` — 10 test cases
 
 ---
 

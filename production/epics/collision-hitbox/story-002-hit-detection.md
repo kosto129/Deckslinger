@@ -1,7 +1,7 @@
 # Story 002: Hit Detection
 
 > **Epic**: Collision/Hitbox System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -160,7 +160,7 @@ func receive_hit(hit_data: HitData) -> void:
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/collision/hit_detection_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/collision/hit_detection_test.gd` — 10 test cases
 
 ---
 

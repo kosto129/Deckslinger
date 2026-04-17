@@ -1,7 +1,7 @@
 # Story 003: Component Scripts
 
 > **Epic**: Entity Framework
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -25,12 +25,12 @@
 
 ## Acceptance Criteria
 
-- [ ] 8 component scripts exist, each with unique `class_name`:
+- [x] 8 component scripts exist, each with unique `class_name`:
   - HealthComponent, HitboxComponent, HurtboxComponent, MovementComponent, AnimationComponent, StatusEffectComponent, FactionComponent, AIBehaviorComponent
-- [ ] Each component extends the appropriate base (Node for logic-only, Area2D for hitbox/hurtbox)
-- [ ] EntityBase typed getters return the component or null if absent
-- [ ] Entity with missing component (e.g., no AIBehaviorComponent) does not error
-- [ ] HealthComponent exposes: take_damage(), heal(), get_current_hp(), get_max_hp(), is_alive(), health_changed signal, died signal
+- [x] Each component extends the appropriate base (Node for logic-only, Area2D for hitbox/hurtbox)
+- [x] EntityBase typed getters return the component or null if absent
+- [x] Entity with missing component (e.g., no AIBehaviorComponent) does not error
+- [x] HealthComponent exposes: take_damage(), heal(), get_current_hp(), get_max_hp(), is_alive(), health_changed signal, died signal
 
 ---
 
@@ -74,7 +74,7 @@ HealthComponent is the most complete stub — it needs take_damage/heal/signals 
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/entity/component_discovery_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/entity/component_discovery_test.gd` — 13 test cases
 
 ---
 

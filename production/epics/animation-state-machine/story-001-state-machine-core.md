@@ -1,7 +1,7 @@
 # Story 001: Animation State Machine Core
 
 > **Epic**: Animation State Machine
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -132,7 +132,7 @@ Formula F.1 (total lock duration): `total_lock_frames = windup + active + recove
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/animation/animation_state_machine_core_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/animation/animation_state_machine_core_test.gd` — 16 test cases
 
 ---
 

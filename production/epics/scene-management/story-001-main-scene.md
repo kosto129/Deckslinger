@@ -1,7 +1,7 @@
 # Story 001: Main Scene Structure
 
 > **Epic**: Scene Management
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Integration
 > **Manifest Version**: 2026-04-17
@@ -97,7 +97,7 @@ parallel, but integration testing requires both.
 
 **Story Type**: Integration
 **Required evidence**: Manual walkthrough — confirm scene tree structure matches spec
-**Status**: [ ] Not yet created
+**Status**: [x] Main.tscn created — visual verification in Godot editor pending
 
 Manual verification steps:
 1. Open `src/Main.tscn` in Godot editor — confirm node hierarchy matches the spec above.

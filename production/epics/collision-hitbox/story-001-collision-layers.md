@@ -1,7 +1,7 @@
 # Story 001: Collision Layer Configuration
 
 > **Epic**: Collision/Hitbox System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Config/Data
 > **Manifest Version**: 2026-04-17

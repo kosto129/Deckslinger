@@ -1,7 +1,7 @@
 # Story 002: EntityBase Lifecycle State Machine
 
 > **Epic**: Entity Framework
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -26,16 +26,16 @@
 
 ## Acceptance Criteria
 
-- [ ] `EntityBase` class exists extending Node2D with `entity_type` and `_lifecycle_state`
-- [ ] 6 lifecycle states: INACTIVE → SPAWNING → ACTIVE → STUNNED → DYING → DEAD
-- [ ] `activate()` transitions INACTIVE → SPAWNING
-- [ ] `die()` transitions ACTIVE/STUNNED → DYING
-- [ ] `despawn()` transitions DYING → DEAD and calls `queue_free()`
-- [ ] `set_stunned(true)` transitions ACTIVE → STUNNED; `set_stunned(false)` transitions STUNNED → ACTIVE
-- [ ] `lifecycle_state_changed(old, new)` signal emits on every valid transition
-- [ ] `despawned(entity)` signal emits before `queue_free()`
-- [ ] Invalid transitions (e.g., DEAD → ACTIVE) are rejected with error log in debug
-- [ ] `get_lifecycle_state()` returns current state
+- [x] `EntityBase` class exists extending Node2D with `entity_type` and `_lifecycle_state`
+- [x] 6 lifecycle states: INACTIVE → SPAWNING → ACTIVE → STUNNED → DYING → DEAD
+- [x] `activate()` transitions INACTIVE → SPAWNING
+- [x] `die()` transitions ACTIVE/STUNNED → DYING
+- [x] `despawn()` transitions DYING → DEAD and calls `queue_free()`
+- [x] `set_stunned(true)` transitions ACTIVE → STUNNED; `set_stunned(false)` transitions STUNNED → ACTIVE
+- [x] `lifecycle_state_changed(old, new)` signal emits on every valid transition
+- [x] `despawned(entity)` signal emits before `queue_free()`
+- [x] Invalid transitions (e.g., DEAD → ACTIVE) are rejected with error log in debug
+- [x] `get_lifecycle_state()` returns current state
 
 ---
 
@@ -94,7 +94,7 @@ signal despawned(entity: EntityBase)
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/entity/entity_base_lifecycle_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/entity/entity_base_lifecycle_test.gd` — 17 test cases
 
 ---
 

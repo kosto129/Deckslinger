@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/foundation/data/card_data.gd" id="1"]
+
+[sub_resource type="Resource" id="effect_1"]
+script = preload("res://src/foundation/data/card_effect.gd")
+effect_type = 7
+value = 2.0
+secondary_value = 0.0
+target_override = 4
+status_effect_id = &""
+status_duration_frames = 0
+vfx_key = &""
+
+[resource]
+script = ExtResource("1")
+card_id = &"reload"
+display_name = "Reload"
+description = "Draw {value} extra cards."
+card_type = 1
+archetype = 0
+rarity = 0
+effects = [SubResource("effect_1")]
+targeting = 0
+cooldown_frames = 120
+animation_key = &"reload"
+windup_frames = 10
+active_frames = 2
+recovery_frames = 8
+shake_intensity = 0.0
+upgraded = false
+upgrade_card_id = &""
+tags = [&"starter", &"starter_gunslinger"]

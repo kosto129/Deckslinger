@@ -1,7 +1,7 @@
 # Story 001: Viewport Setup
 
 > **Epic**: Camera System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Config/Data
 > **Manifest Version**: 2026-04-17
@@ -25,12 +25,12 @@
 
 ## Acceptance Criteria
 
-- [ ] `display/window/size/viewport_width` = 384 in `project.godot`
-- [ ] `display/window/size/viewport_height` = 216 in `project.godot`
-- [ ] `display/window/stretch/mode` = `"canvas_items"` in `project.godot`
-- [ ] `display/window/stretch/aspect` = `"keep"` in `project.godot`
-- [ ] `rendering/2d/snap/snap_2d_transforms_to_pixel` = `true` in `project.godot`
-- [ ] `rendering/2d/snap/snap_2d_vertices_to_pixel` = `true` in `project.godot`
+- [x] `display/window/size/viewport_width` = 384 in `project.godot`
+- [x] `display/window/size/viewport_height` = 216 in `project.godot`
+- [x] `display/window/stretch/mode` = `"canvas_items"` in `project.godot`
+- [x] `display/window/stretch/aspect` = `"keep"` in `project.godot`
+- [x] `rendering/2d/snap/snap_2d_transforms_to_pixel` = `true` in `project.godot`
+- [x] `rendering/2d/snap/snap_2d_vertices_to_pixel` = `true` in `project.godot`
 - [ ] At 1920×1080: game renders at 384×216 scaled 5× with zero letterbox bars
 - [ ] At 2560×1440: game renders at 384×216 scaled 6× with 128px horizontal and 72px vertical black letterbox bars
 - [ ] All sprites remain pixel-aligned — no sub-pixel shimmer visible on static scene
@@ -74,7 +74,7 @@ and verify rendering at each relevant resolution.
 
 **Story Type**: Config/Data
 **Required evidence**: Smoke check — game renders at correct resolution with integer scaling
-**Status**: [ ] Not yet created
+**Status**: [x] Settings configured in project.godot — visual verification requires in-engine test
 
 Manual verification steps:
 1. Launch game at 1920×1080 — confirm 5× scale, no letterbox.

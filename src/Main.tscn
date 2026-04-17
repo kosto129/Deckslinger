@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://src/core/entity_base.gd" id="1_entity"]
+[ext_resource type="Script" path="res://src/core/transition_overlay.gd" id="2_overlay"]
+[ext_resource type="Script" path="res://src/gameplay/player_controller.gd" id="3_player_ctrl"]
+[ext_resource type="Script" path="res://src/components/health_component.gd" id="4_health"]
+[ext_resource type="Script" path="res://src/components/movement_component.gd" id="5_movement"]
+[ext_resource type="Script" path="res://src/components/animation_component.gd" id="6_animation"]
+[ext_resource type="Script" path="res://src/components/hitbox_component.gd" id="7_hitbox"]
+[ext_resource type="Script" path="res://src/components/hurtbox_component.gd" id="8_hurtbox"]
+[ext_resource type="Script" path="res://src/core/combat_system.gd" id="9_combat"]
+[ext_resource type="Script" path="res://src/core/card_hand_system.gd" id="10_card_hand"]
+[ext_resource type="Script" path="res://src/components/faction_component.gd" id="11_faction"]
+
+[node name="Main" type="Node2D"]
+
+[node name="RoomContainer" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_entity")
+position = Vector2(192, 108)
+
+[node name="HealthComponent" type="Node" parent="Player"]
+script = ExtResource("4_health")
+max_hp = 100
+
+[node name="MovementComponent" type="Node" parent="Player"]
+script = ExtResource("5_movement")
+move_speed = 120.0
+
+[node name="AnimationComponent" type="Node" parent="Player"]
+script = ExtResource("6_animation")
+
+[node name="HitboxComponent" type="Area2D" parent="Player"]
+script = ExtResource("7_hitbox")
+collision_layer = 1
+collision_mask = 8
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Player/HitboxComponent"]
+
+[node name="HurtboxComponent" type="Area2D" parent="Player"]
+script = ExtResource("8_hurtbox")
+collision_layer = 2
+collision_mask = 36
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Player/HurtboxComponent"]
+
+[node name="FactionComponent" type="Node" parent="Player"]
+script = ExtResource("11_faction")
+faction = 0
+
+[node name="PlayerController" type="Node" parent="Player"]
+script = ExtResource("3_player_ctrl")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+position = Vector2(192, 108)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 1
+
+[node name="TransitionOverlay" type="ColorRect" parent="UILayer"]
+script = ExtResource("2_overlay")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0)
+
+[node name="CardHandUI" type="Control" parent="UILayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CombatHUD" type="Control" parent="UILayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CombatSystem" type="Node" parent="."]
+script = ExtResource("9_combat")
+
+[node name="CardHandSystem" type="Node" parent="."]
+script = ExtResource("10_card_hand")
+
+[node name="DungeonMapLayer" type="CanvasLayer" parent="."]
+layer = 2

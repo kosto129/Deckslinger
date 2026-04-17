@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/core/entity_base.gd" id="1_entity"]
+[ext_resource type="Script" path="res://src/components/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://src/components/movement_component.gd" id="3_movement"]
+[ext_resource type="Script" path="res://src/components/animation_component.gd" id="4_animation"]
+[ext_resource type="Script" path="res://src/components/hitbox_component.gd" id="5_hitbox"]
+[ext_resource type="Script" path="res://src/components/hurtbox_component.gd" id="6_hurtbox"]
+
+[node name="TestRoom" type="Node2D"]
+
+[node name="RoomBounds" type="ReferenceRect" parent="."]
+offset_right = 384.0
+offset_bottom = 216.0
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+position = Vector2(192, -4)
+shape = SubResource("RectangleShape2D_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(192, 220)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-4, 108)
+shape = SubResource("RectangleShape2D_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+position = Vector2(388, 108)
+shape = SubResource("RectangleShape2D_right")
+
+[node name="Enemy1" type="Node2D" parent="."]
+script = ExtResource("1_entity")
+position = Vector2(300, 108)
+
+[node name="HealthComponent" type="Node" parent="Enemy1"]
+script = ExtResource("2_health")
+max_hp = 30
+
+[node name="MovementComponent" type="Node" parent="Enemy1"]
+script = ExtResource("3_movement")
+move_speed = 50.0
+
+[node name="AnimationComponent" type="Node" parent="Enemy1"]
+script = ExtResource("4_animation")
+
+[node name="HitboxComponent" type="Area2D" parent="Enemy1"]
+script = ExtResource("5_hitbox")
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Enemy1/HitboxComponent"]
+
+[node name="HurtboxComponent" type="Area2D" parent="Enemy1"]
+script = ExtResource("6_hurtbox")
+collision_layer = 8
+collision_mask = 17
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Enemy1/HurtboxComponent"]
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0.15, 0.12, 0.1, 1)

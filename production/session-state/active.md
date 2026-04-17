@@ -1,48 +1,43 @@
 # Session State — Deckslinger
 
 ## Current Task
-Technical Setup complete. Entered Pre-Production.
+MVP code complete. Ready for in-engine verification.
 
-## Progress — Concept Phase ✅
-- [x] Game concept (`design/gdd/game-concept.md`)
-- [x] Art bible (`design/art/art-bible.md`)
+## MVP Inventory
 
-## Progress — Systems Design Phase ✅
-- [x] Systems index — 24 systems, 16 MVP
-- [x] All 16 MVP GDDs written
-- [x] Cross-GDD review — CONCERNS (blockers fixed)
-- [x] Gate: Systems Design → Technical Setup — PASS
+### Source Files (23 scripts + 2 scenes)
+- `src/core/` — enums, entity_base, scene_manager, transition_overlay, hit_data, combat_system, card_hand_system, game_manager
+- `src/components/` — 8 component scripts (health, hitbox, hurtbox, movement, animation, status_effect, faction, ai_behavior)
+- `src/foundation/` — input_manager, card_registry, data/ (card_data, card_effect, effect_condition)
+- `src/gameplay/` — player_controller
+- `src/rooms/` — room_setup
+- `src/Main.tscn` — main scene with player, camera, UI, combat, card hand
+- `src/rooms/TestRoom.tscn` — test combat room with 1 enemy
 
-## Progress — Technical Setup Phase ✅
-- [x] Master architecture document
-- [x] 9 ADRs written and Accepted (Foundation + Core)
-- [x] Test framework (GdUnit4 + CI)
-- [x] Control manifest
-- [x] Architecture review — PASS
-- [x] Accessibility requirements (Basic tier)
-- [x] UX interaction patterns + Card Hand HUD spec
-- [x] Example test file (damage formula, 8 test cases)
-- [x] Gate: Technical Setup → Pre-Production — PASS
+### Test Files (10 test suites, ~119 test cases)
+- entity lifecycle (17), component discovery (13), animation FSM (16)
+- input buffer (13), card data resources (9), card registry (10)
+- collision/hit detection (10), damage pipeline (8+8), card hand (10)
 
-## Progress — Pre-Production Phase (current)
-- [ ] Create epics (`/create-epics layer: foundation`, then core)
-- [x] Create stories — Card Data System epic (4 stories, 2026-04-16)
-- [ ] Create stories — remaining epics
-- [ ] Prototype core combat + card hand loop
-- [ ] Playtest (3+ sessions)
-- [ ] Gate: Pre-Production → Production
+### Data Files (8 starter cards)
+- 5 Gunslinger: quick_draw, fan_fire, reload, dead_eye, ricochet
+- 3 Neutral: dodge_roll, shield_bash, bandage
 
-## Key Architecture Decisions
-- 6 autoloads: Enums, CardRegistry, InputManager, RunStateManager, SceneManager, GameManager
-- Entity composition via child nodes, signals for cross-layer communication
-- Resources for data, RefCounted for runtime packets, frame-counted timers
-- 9 ADRs covering entity, signals, scenes, data, input, camera, animation, collision, damage
+### Autoloads (6)
+Enums, InputManager, CardRegistry, SceneManager, GameManager, (CombatSystem as scene node)
 
-## Next Action
-Create epics and stories, then prototype the core loop
+## What to Verify in Godot
+1. Open project in Godot 4.6
+2. Verify project.godot parses without errors
+3. Run Main.tscn — player should move with WASD
+4. Check collision shape warnings (shapes need to be added in editor)
+5. Press 1/2/3/4 to play cards from hand
+6. Verify enemy takes damage from player attacks
+7. Check output log for any script errors
 
-## Files Created This Session
-- 16 GDDs, cross-GDD review, architecture doc, 9 ADRs, control manifest
-- Architecture review + traceability, test framework + CI, accessibility doc
-- UX interaction patterns, Card Hand HUD spec, example test file
-- production/stage.txt → Pre-Production
+## Known Gaps for Playability
+- CollisionShape2D nodes have no shapes assigned (need editor)
+- No visual sprites (placeholder colored rects needed)
+- No enemy AI (enemies stand still)
+- No death VFX or respawn
+- Card Hand UI not wired (cards play but no visual feedback)

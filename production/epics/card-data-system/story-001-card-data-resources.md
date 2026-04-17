@@ -1,7 +1,7 @@
 # Story 001: CardData and CardEffect Resource Classes
 
 > **Epic**: Card Data System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -116,7 +116,7 @@
 **Story Type**: Logic
 **Required evidence**: Automated unit test — must pass (`tests/unit/card_data/`)
 **Gate level**: BLOCKING
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/card_data/card_data_resource_test.gd` — 9 test cases
 
 ### QA Test Cases
 

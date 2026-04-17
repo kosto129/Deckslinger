@@ -1,7 +1,7 @@
 # Story 001: Damage Pipeline
 
 > **Epic**: Combat System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -153,7 +153,7 @@ Formula reference (GDD F.1 and ADR-0009):
 
 **Story Type**: Logic
 **Required evidence**: `tests/unit/combat/damage_pipeline_test.gd` — must exist and pass
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/combat/damage_pipeline_test.gd` — 8 test cases
 
 ---
 

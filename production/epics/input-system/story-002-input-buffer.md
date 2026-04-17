@@ -1,7 +1,7 @@
 # Story 002: Input Buffer
 
 > **Epic**: Input System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -177,7 +177,7 @@ The buffer logic lives entirely inside `InputManager` autoload. Key implementati
 **Story Type**: Logic
 **Required evidence**: Automated unit tests (GdUnit4) — BLOCKING gate
 **Location**: `tests/unit/input/input_buffer_test.gd`
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/input/input_buffer_test.gd` — 13 test cases
 
 ---
 

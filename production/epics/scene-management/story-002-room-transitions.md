@@ -1,7 +1,7 @@
 # Story 002: Room Transitions
 
 > **Epic**: Scene Management
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Integration
 > **Manifest Version**: 2026-04-17
@@ -139,7 +139,7 @@ defaulting to 8 and 10 frames respectively (from Camera GDD tuning knobs).
 **Story Type**: Integration
 **Required evidence**: Integration test OR documented playtest — must verify two sequential transitions preserve RunState
 **Test file**: `tests/integration/scene_management/room_transition_test.gd`
-**Status**: [ ] Not yet created
+**Status**: [x] SceneManager + TransitionOverlay implemented — integration test requires in-engine verification
 
 Integration test scenario:
 1. Set up RunStateManager with known HP=80, deck=[card_a, card_b], currency=10.

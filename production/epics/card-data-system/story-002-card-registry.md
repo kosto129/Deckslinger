@@ -1,7 +1,7 @@
 # Story 002: CardRegistry Autoload
 
 > **Epic**: Card Data System
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Foundation
 > **Type**: Logic
 > **Manifest Version**: 2026-04-17
@@ -115,7 +115,7 @@ Implement Option 1 (tag-based). Add tag `&"starter"` plus `&"starter_gunslinger"
 **Story Type**: Logic
 **Required evidence**: Automated unit test — must pass (`tests/unit/card_registry/`)
 **Gate level**: BLOCKING
-**Status**: [ ] Not yet created
+**Status**: [x] `tests/unit/card_registry/card_registry_test.gd` — 10 test cases
 
 ### QA Test Cases
 
