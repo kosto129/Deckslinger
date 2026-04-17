@@ -4,7 +4,16 @@
 > **GDD**: design/gdd/input-system.md
 > **Architecture Module**: foundation/input_manager.gd (autoload)
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories input-system`
+> **Stories**: 4 stories created
+
+## Stories
+
+| Story | Title | Type | Status | Depends On |
+|-------|-------|------|--------|------------|
+| [story-001-action-map.md](story-001-action-map.md) | Action Map Configuration | Config/Data | Ready | entity-framework/story-001 |
+| [story-002-input-buffer.md](story-002-input-buffer.md) | Input Buffer | Logic | Ready | story-001 |
+| [story-003-movement-aim.md](story-003-movement-aim.md) | Movement Vector and Aim Direction | Logic | Ready | story-001, story-002 |
+| [story-004-device-detection.md](story-004-device-detection.md) | Device Detection and Mode Management | Integration | Ready | story-001, story-002, story-003 |
 
 ## Overview
 
@@ -43,6 +52,10 @@ This epic is complete when:
 - Device switching fires input_device_changed signal
 - Unit tests pass for buffer lifecycle, movement normalization, dead zone math
 
-## Next Step
+## Implementation Order
 
-Run `/create-stories input-system` to break this epic into implementable stories.
+Stories must be implemented in dependency order:
+1. story-001-action-map (project.godot configuration — no code dependencies)
+2. story-002-input-buffer (InputManager autoload scaffold + buffer logic)
+3. story-003-movement-aim (movement and aim query methods added to InputManager)
+4. story-004-device-detection (device tracking, signals, freeze support — completes InputManager)

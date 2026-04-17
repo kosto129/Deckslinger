@@ -4,7 +4,16 @@
 > **GDD**: design/gdd/camera-system.md
 > **Architecture Module**: foundation/camera_controller.gd
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories camera-system`
+> **Stories**: 4 stories created
+
+## Stories
+
+| # | File | Type | Status | Description |
+|---|------|------|--------|-------------|
+| 001 | [story-001-viewport-setup.md](story-001-viewport-setup.md) | Config/Data | Ready | Configure Project Settings: 384×216, canvas_items, keep, pixel snapping |
+| 002 | [story-002-player-follow.md](story-002-player-follow.md) | Logic | Ready | Exponential lerp follow + look-ahead + pixel snap |
+| 003 | [story-003-room-clamping.md](story-003-room-clamping.md) | Logic | Ready | set_room_bounds() clamping, small room lock to center |
+| 004 | [story-004-shake-and-freeze.md](story-004-shake-and-freeze.md) | Logic | Ready | request_shake() with decay, set_frozen() hit-stop hold |
 
 ## Overview
 
@@ -46,4 +55,4 @@ This epic is complete when:
 
 ## Next Step
 
-Run `/create-stories camera-system` to break this epic into implementable stories.
+Implement Story 001 (viewport Project Settings), then Story 002 (player follow script). Stories 003 and 004 extend the same `_physics_process` pipeline and can follow in sequence.

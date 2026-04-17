@@ -4,7 +4,16 @@
 > **GDD**: design/gdd/animation-state-machine.md
 > **Architecture Module**: gameplay/animation_state_machine.gd (on AnimationComponent)
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories animation-state-machine`
+> **Stories**: 4 stories created
+
+## Stories
+
+| # | Title | Type | Status | ADR |
+|---|-------|------|--------|-----|
+| [001](story-001-state-machine-core.md) | State Machine Core | Logic | Ready | ADR-0007 |
+| [002](story-002-commitment-enforcement.md) | Commitment Enforcement | Logic | Ready | ADR-0007 |
+| [003](story-003-hit-stop.md) | Hit-Stop | Logic | Ready | ADR-0007 |
+| [004](story-004-sprite-integration.md) | Sprite Integration | Visual/Feel | Ready | ADR-0007 |
 
 ## Overview
 

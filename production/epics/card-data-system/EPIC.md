@@ -4,7 +4,7 @@
 > **GDD**: design/gdd/card-data-system.md
 > **Architecture Module**: foundation/card_registry.gd (autoload) + foundation/data/
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories card-data-system`
+> **Stories**: 4 stories created 2026-04-16
 
 ## Overview
 
@@ -40,6 +40,17 @@ This epic is complete when:
 - Unit tests pass for registry loading, card lookup, starter deck composition
 - All acceptance criteria from card-data-system.md are verified
 
+## Stories
+
+| Story | Title | Type | Status | Gate |
+|-------|-------|------|--------|------|
+| [001](story-001-card-data-resources.md) | CardData and CardEffect Resource Classes | Logic | Ready | BLOCKING |
+| [002](story-002-card-registry.md) | CardRegistry Autoload | Logic | Ready | BLOCKING |
+| [003](story-003-starter-cards.md) | Starter Card .tres Files | Config/Data | Ready | ADVISORY |
+| [004](story-004-description-substitution.md) | Card Description Variable Substitution | Logic | Ready | BLOCKING |
+
+**Implementation order**: 001 → 002 → 003 → 004 (each story unblocks the next)
+
 ## Next Step
 
-Run `/create-stories card-data-system` to break this epic into implementable stories.
+Implement Story 001: `src/foundation/data/card_data.gd` and `src/foundation/data/card_effect.gd`

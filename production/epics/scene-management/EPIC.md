@@ -4,7 +4,15 @@
 > **GDD**: N/A (architectural infrastructure — governed by ADR-0003)
 > **Architecture Module**: core/scene_manager.gd (autoload) + core/game_manager.gd (autoload)
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories scene-management`
+> **Stories**: 3 stories created
+
+## Stories
+
+| # | File | Type | Status | Description |
+|---|------|------|--------|-------------|
+| 001 | [story-001-main-scene.md](story-001-main-scene.md) | Integration | Ready | Main.tscn with RoomContainer, Player, GameCamera, UILayer, TransitionOverlay |
+| 002 | [story-002-room-transitions.md](story-002-room-transitions.md) | Integration | Ready | SceneManager autoload: fade out → free → instantiate → position → camera → fade in |
+| 003 | [story-003-game-manager.md](story-003-game-manager.md) | Logic | Ready | GameManager state machine: MENU → RUN → DEATH/VICTORY → MENU |
 
 ## Overview
 
@@ -42,4 +50,4 @@ This epic is complete when:
 
 ## Next Step
 
-Run `/create-stories scene-management` to break this epic into implementable stories.
+Implement Story 001 (Main.tscn structure), then Story 002 (SceneManager autoload), then Story 003 (GameManager). Stories are strictly sequential — each depends on the previous.

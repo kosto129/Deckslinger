@@ -4,7 +4,17 @@
 > **GDD**: design/gdd/entity-framework.md
 > **Architecture Module**: foundation/entity_base + foundation/components/
 > **Status**: Ready
-> **Stories**: Not yet created — run `/create-stories entity-framework`
+> **Stories**: 5 stories created
+
+## Stories
+
+| # | Story | Type | Status | ADR |
+|---|-------|------|--------|-----|
+| 001 | Shared Enums Autoload | Config/Data | Ready | ADR-0004 |
+| 002 | EntityBase Lifecycle State Machine | Logic | Ready | ADR-0001 |
+| 003 | Component Scripts | Logic | Ready | ADR-0001 |
+| 004 | Entity Scene Templates | Integration | Ready | ADR-0001 |
+| 005 | Lifecycle Edge Cases | Logic | Ready | ADR-0001 |
 
 ## Overview
 

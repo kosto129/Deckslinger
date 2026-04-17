@@ -26,7 +26,8 @@ Technical Setup complete. Entered Pre-Production.
 
 ## Progress — Pre-Production Phase (current)
 - [ ] Create epics (`/create-epics layer: foundation`, then core)
-- [ ] Create stories per epic (`/create-stories [epic-slug]`)
+- [x] Create stories — Card Data System epic (4 stories, 2026-04-16)
+- [ ] Create stories — remaining epics
 - [ ] Prototype core combat + card hand loop
 - [ ] Playtest (3+ sessions)
 - [ ] Gate: Pre-Production → Production
